@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inferiva | Powering Transformations That Stick</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --ink:#101828;
+      --muted:#5f6c7b;
+      --line:#e7edf3;
+      --panel:#ffffff;
+      --bg:#f7fafc;
+      --brand:#0f5fd7;
+      --brand-dark:#0b4fb6;
+      --brand-soft:#edf4ff;
+      --navy:#0d1b2a;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:linear-gradient(180deg,#fbfdff 0%,#f7fafc 100%);
+      color:var(--ink);
+    }
+    .site-header{
+      background:rgba(255,255,255,.84);
+      backdrop-filter: blur(14px);
+      border-bottom:1px solid rgba(231,237,243,.9);
+      box-shadow:0 10px 28px rgba(16,24,40,.04);
+    }
+    .nav-link{
+      position:relative;
+      color:#344054;
+      font-weight:600;
+      transition:color .2s ease;
+    }
+    .nav-link:hover,.nav-link.active{color:var(--brand)}
+    .nav-link::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-10px;
+      width:100%;
+      height:2px;
+      background:var(--brand);
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:transform .2s ease;
+    }
+    .nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+    .hero-bg{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(180deg,#f8fbff 0%, #ffffff 100%);
+    }
+    .hero-backdrop{
+      position:absolute;
+      inset:0;
+    }
+    .hero-backdrop::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(13,27,42,.82) 0%, rgba(13,27,42,.56) 40%, rgba(13,27,42,.18) 100%),
+        linear-gradient(180deg, rgba(15,95,215,.16), rgba(13,27,42,.34));
+    }
+    .eyebrow{
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size:.78rem;
+      font-weight:700;
+      color:#667085;
+    }
+    .section-title{letter-spacing:-.03em}
+    .primary-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:9999px;
+      background:var(--brand);
+      color:white;
+      font-weight:700;
+      transition:all .2s ease;
+      box-shadow:0 14px 28px rgba(15,95,215,.18);
+    }
+    .primary-btn:hover{background:var(--brand-dark);transform:translateY(-1px)}
+    .secondary-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:9999px;
+      border:1px solid #c8d7f2;
+      background:#fff;
+      color:var(--brand);
+      font-weight:700;
+      transition:all .2s ease;
+    }
+    .secondary-btn:hover{background:var(--brand-soft)}
+    .card,.quote-card,.resource-card,.highlight-card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      box-shadow:0 18px 40px rgba(16,24,40,.06);
+    }
+    .hero-image-wrap{
+      overflow:hidden;
+      border-radius:2rem;
+      border:1px solid var(--line);
+      box-shadow:0 28px 56px rgba(16,24,40,.12);
+      position:relative;
+    }
+    .hero-image-wrap::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(16,24,40,.02), rgba(16,24,40,.12));
+      pointer-events:none;
+    }
+    .metric{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.78);
+      backdrop-filter: blur(8px);
+    }
+    .dark-band{
+      background:
+        radial-gradient(circle at top right, rgba(15,95,215,.18), transparent 28%),
+        linear-gradient(180deg,#0d1b2a 0%, #10243d 100%);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header fixed inset-x-0 top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        
+<a href="#home" class="flex items-center gap-3">
+  <svg width="220" height="56" viewBox="0 0 720 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Inferiva logo" class="h-12 w-auto md:h-14">
+    <defs>
+      <linearGradient id="barGrad1" x1="16" y1="132" x2="70" y2="78" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#2EC5FF"/>
+        <stop offset="1" stop-color="#0F8BFF"/>
+      </linearGradient>
+      <linearGradient id="barGrad2" x1="56" y1="132" x2="112" y2="56" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#1FAFFF"/>
+        <stop offset="1" stop-color="#0C7BFF"/>
+      </linearGradient>
+      <linearGradient id="barGrad3" x1="96" y1="132" x2="154" y2="34" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#169BFF"/>
+        <stop offset="1" stop-color="#FF9F1C"/>
+      </linearGradient>
+      <linearGradient id="sailGrad" x1="102" y1="148" x2="192" y2="56" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#0B4FB6"/>
+        <stop offset="1" stop-color="#0A2B7A"/>
+      </linearGradient>
+    </defs>
+    <g transform="translate(8,14)">
+      <path d="M8 120L40 104V136H8V120Z" fill="url(#barGrad1)"/>
+      <path d="M50 94L82 68V136H50V94Z" fill="url(#barGrad2)"/>
+      <path d="M92 66L124 34V136H92V66Z" fill="url(#barGrad3)"/>
+      <path d="M138 52L170 22V136H138V52Z" fill="#FF9F1C"/>
+      <path d="M58 136L170 48V136H58Z" fill="url(#sailGrad)"/>
+      <path d="M124 94L170 48V136H124V94Z" fill="#0A256B" opacity="0.85"/>
+    </g>
+    <g transform="translate(220,0)">
+      <text x="0" y="96" font-family="Inter, Arial, Helvetica, sans-serif" font-size="78" font-weight="700" fill="#0C2E7A" letter-spacing="-2">Inferiva</text>
+    </g>
+  </svg>
+</a>
+
+
+        <nav class="hidden items-center gap-8 md:flex">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#solutions" class="nav-link">Solutions</a>
+          <a href="#platform" class="nav-link">Platform</a>
+          <a href="#consulting" class="nav-link">Consulting</a>
+          <a href="#resources" class="nav-link">Resources</a>
+          <a href="#partners-tab" class="nav-link">Partners</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <button id="mobile-menu-button" class="md:hidden rounded-xl border border-slate-200 px-3 py-2 text-slate-700" aria-label="Toggle menu">☰</button>
+      </div>
+
+      <nav id="mobile-menu" class="hidden border-t border-slate-200 pb-4 pt-3 md:hidden">
+        <div class="flex flex-col gap-3">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#solutions" class="nav-link">Solutions</a>
+          <a href="#platform" class="nav-link">Platform</a>
+          <a href="#consulting" class="nav-link">Consulting</a>
+          <a href="#resources" class="nav-link">Resources</a>
+          <a href="#partners-tab" class="nav-link">Partners</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div id="main-site-content">
+    
+<section id="home" class="hero-bg pt-24 md:pt-28">
+  <div class="hero-backdrop">
+    <img
+      src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80"
+      alt="Professionals collaborating in a transformation workshop"
+      class="h-full w-full object-cover"
+    />
+  </div>
+  <div class="container relative z-10 mx-auto px-4 py-20 md:py-28">
+    <div class="mx-auto max-w-3xl text-white text-center">
+      <p class="eyebrow !text-slate-200">Transformation Intelligence</p>
+      <h1 class="section-title mt-5 text-4xl font-bold leading-tight text-white md:text-6xl text-center mx-auto">
+        Powering Transformations That Stick
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-100 md:text-2xl">
+        Smarter, Faster, Better – Your Partner for Real Change
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="#contact" class="primary-btn px-8 py-3.5">Get Started</a>
+        <a href="#platform" class="secondary-btn px-8 py-3.5 !border-white/50 !bg-white/10 !text-white hover:!bg-white/20">See Demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <section class="bg-white py-16">
+      <div class="container mx-auto px-4">
+        <div class="grid gap-5 md:grid-cols-4">
+          <div class="highlight-card rounded-3xl px-6 py-6 text-center font-semibold text-slate-800">Insight-Driven Decisions</div>
+          <div class="highlight-card rounded-3xl px-6 py-6 text-center font-semibold text-slate-800">Adaptive & Intelligent Platform</div>
+          <div class="highlight-card rounded-3xl px-6 py-6 text-center font-semibold text-slate-800">Proven Adoption Framework</div>
+          <div class="highlight-card rounded-3xl px-6 py-6 text-center font-semibold text-slate-800">Trusted by Industry Leaders</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="solutions" class="bg-[var(--bg)] py-24">
+      <div class="container mx-auto px-4">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="eyebrow">Core Offer</p>
+          <h2 class="section-title mt-4 text-3xl font-bold text-slate-950 md:text-5xl">
+            The platform and expertise to turn change into sustained progress
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">
+            Inferiva blends productised insight with consulting depth, giving leadership teams both the intelligence and the execution support needed for successful transformation.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-8 lg:grid-cols-2">
+          <article id="platform" class="card rounded-[2rem] p-8">
+            <img
+              src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80"
+              alt="Team reviewing platform dashboards"
+              class="h-64 w-full rounded-3xl object-cover"
+            />
+            <h3 class="mt-7 text-2xl font-semibold text-slate-950">TransformIQ Platform</h3>
+            <p class="mt-4 text-base leading-8 text-slate-600">
+              An adaptive diagnostic engine delivering real-time, context-aware insight across readiness, risk, adoption and organisational momentum, so leaders can act with greater confidence.
+            </p>
+            <a href="#contact" class="mt-6 inline-block font-semibold text-[var(--brand)]">Learn More About TransformIQ →</a>
+          </article>
+
+          <article id="consulting" class="card rounded-[2rem] p-8">
+            <img
+              src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80"
+              alt="Senior consultants facilitating transformation planning"
+              class="h-64 w-full rounded-3xl object-cover"
+            />
+            <h3 class="mt-7 text-2xl font-semibold text-slate-950">Consulting Services</h3>
+            <p class="mt-4 text-base leading-8 text-slate-600">
+              Strategic advisory, workshops and executive coaching designed to unlock transformation potential, align stakeholders and create measurable momentum where it matters most.
+            </p>
+            <a href="#resources" class="mt-6 inline-block font-semibold text-[var(--brand)]"></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-band py-24 text-white">
+      <div class="container mx-auto px-4">
+        <div class="grid items-start gap-8 lg:grid-cols-[.9fr_1.1fr]">
+          <div>
+            <p class="eyebrow !text-slate-300">Testimonials</p>
+            <h2 class="section-title mt-4 text-3xl font-bold md:text-5xl">What leaders are saying</h2>
+            <p class="mt-5 max-w-xl text-lg leading-8 text-slate-300">
+              Inferiva is built to bring clarity, momentum and measurable confidence to transformation programmes.
+            </p>
+          </div>
+
+          <div class="grid gap-6">
+            <blockquote class="quote-card rounded-[2rem] bg-white/95 p-8 text-slate-900">
+              <p class="text-xl italic leading-9">
+                “Inferiva’s insights transformed how we approach change. The platform is a game-changer.”
+              </p>
+              <footer class="mt-5 text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">CIO, Global Retail Firm</footer>
+            </blockquote>
+            <blockquote class="quote-card rounded-[2rem] bg-white/95 p-8 text-slate-900">
+              <p class="text-xl italic leading-9">
+                “The consulting team provided clarity and momentum when we needed it most.”
+              </p>
+              <footer class="mt-5 text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">Transformation Lead, Tech Innovator</footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources" class="bg-white py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid items-center gap-10 lg:grid-cols-[1.02fr_.98fr]">
+          <div>
+            <p class="eyebrow">Resources</p>
+            <h2 class="section-title mt-4 text-3xl font-bold text-slate-950 md:text-5xl">
+              Resources to fuel your transformation
+            </h2>
+            <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+              A sharper resource experience gives Inferiva credibility beyond the homepage. Use this section for blog articles, diagnostic guides, case studies and whitepapers.
+            </p>
+            <a href="#contact" class="primary-btn mt-8 px-8 py-3.5">Explore Our Blog & Whitepapers</a>
+          </div>
+
+          <div class="resource-card rounded-[2rem] p-8">
+            <img
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80"
+              alt="Executive reviewing reports and transformation data"
+              class="h-64 w-full rounded-3xl object-cover"
+            />
+            <div class="mt-7">
+              <div class="text-sm font-semibold uppercase tracking-[0.16em] text-slate-400">Featured</div>
+              <h3 class="mt-3 text-2xl font-semibold text-slate-950">From transformation readiness to adoption momentum</h3>
+              <p class="mt-4 leading-8 text-slate-600">
+                Practical perspectives on identifying resistance, improving execution visibility and making change efforts far more likely to succeed.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="bg-[var(--bg)] py-24">
+      <div class="container mx-auto px-4">
+        <div class="card rounded-[2rem] p-8 md:p-12">
+          <div class="grid gap-10 lg:grid-cols-[1fr_.95fr]">
+            <div>
+              <p class="eyebrow">Contact</p>
+              <h2 class="section-title mt-4 text-3xl font-bold text-slate-950 md:text-5xl">Start your next transformation with more clarity</h2>
+              <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+                Whether you want a platform demonstration, strategic input or hands-on transformation support, Inferiva gives you a more structured path to action.
+              </p>
+            </div>
+
+            <form class="space-y-5">
+              <div>
+                <label for="name" class="mb-2 block font-medium text-slate-700">Name</label>
+                <input id="name" type="text" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 focus:border-slate-500 focus:outline-none" />
+              </div>
+              <div>
+                <label for="email" class="mb-2 block font-medium text-slate-700">Email</label>
+                <input id="email" type="email" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 focus:border-slate-500 focus:outline-none" />
+              </div>
+              <div>
+                <label for="message" class="mb-2 block font-medium text-slate-700">Message</label>
+                <textarea id="message" rows="6" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 focus:border-slate-500 focus:outline-none"></textarea>
+              </div>
+              <button type="submit" class="primary-btn px-8 py-3.5">Send Enquiry</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+      </div>
+
+    <section id="partners-tab" class="bg-white py-24 hidden">
+      <div class="container mx-auto px-4">
+        <div class="mx-auto mb-10 max-w-3xl text-center">
+          <p class="eyebrow">Partner Programme</p>
+          <h2 class="section-title mt-4 text-3xl font-bold text-slate-950 md:text-5xl">Consulting Partner Landing Page</h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">
+            This partner-focused experience is embedded directly into the main Inferiva website as a dedicated tab for consulting partners.
+          </p>
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <button id="open-main-tab" class="secondary-btn px-8 py-3.5" type="button">Back to Main Website</button>
+            <a href="#contact" class="primary-btn px-8 py-3.5">Contact the Team</a>
+          </div>
+        </div>
+
+        <div class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_28px_56px_rgba(16,24,40,.12)]">
+          <iframe
+            id="partner-iframe"
+            title="Inferiva Partner Landing Page"
+            class="h-[1600px] w-full border-0"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white py-10">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
+        <div class="text-slate-500">© <span id="current-year"></span> Inferiva. All rights reserved.</div>
+        
+      </div>
+    </div>
+  </footer>
+
+  
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+    const sections = ['home','solutions','platform','consulting','resources','contact']
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+
+    const mainSiteContent = document.getElementById('main-site-content');
+    const partnersTab = document.getElementById('partners-tab');
+    const openMainTabButton = document.getElementById('open-main-tab');
+    const partnerIframe = document.getElementById('partner-iframe');
+    partnerIframe.srcdoc = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Consulting Partner Programme – TransformIQ (Structural Adoption Platform)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --bg-light: #f8fafc;
+      --bg-mid: #e5e7eb;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --text-main: #0f172a;
+      --text-muted: #6b7280;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --radius: 8px;
+      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-main);
+      background: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    header {
+      padding: 16px 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease,
+        box-shadow 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--text-main);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 40px 0 48px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      max-width: 520px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .hero-visual {
+      background: radial-gradient(circle at top left, var(--accent-soft), #eef2ff);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-tag {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .hero-card-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* SECTIONS */
+    section {
+      margin-bottom: 56px;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      max-width: 640px;
+    }
+
+    .section-dark {
+      background: var(--bg-dark);
+      color: var(--white);
+      border-radius: 20px;
+      padding: 28px 24px;
+    }
+
+    .section-dark .section-title {
+      color: var(--white);
+    }
+
+    .section-dark .section-subtitle {
+      color: #cbd5f5;
+    }
+
+    .pill-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      font-size: 0.85rem;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: #e5e7eb;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 18px 18px 16px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .card-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.9rem;
+    }
+
+    .card ul li {
+      margin-bottom: 6px;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .card ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .feature {
+      background: var(--bg-light);
+      border-radius: 16px;
+      padding: 16px 16px 14px;
+      border: 1px solid var(--border);
+    }
+
+    .feature-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .feature-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .model-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .model-card {
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 16px 16px 14px;
+      background: var(--white);
+    }
+
+    .model-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .model-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .case-panel {
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 20px 18px 18px;
+      background: var(--bg-light);
+    }
+
+    .case-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .case-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .case-list li {
+      margin-bottom: 6px;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .case-list li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--text-main);
+    }
+
+    .why-now {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 0.98rem;
+      color: var(--text-muted);
+    }
+
+    .cta-panel {
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--accent), #1d4ed8);
+      color: var(--white);
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .cta-panel h2 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .cta-panel p {
+      font-size: 0.98rem;
+      margin-bottom: 18px;
+      color: #e5edff;
+    }
+
+    .cta-panel .btn-primary {
+      background: var(--white);
+      color: var(--accent);
+      box-shadow: none;
+    }
+
+    .cta-panel .btn-primary:hover {
+      background: #e5edff;
+    }
+
+    .cta-panel .btn-secondary {
+      border-color: rgba(255, 255, 255, 0.6);
+      color: #e5edff;
+      background: transparent;
+    }
+
+    .cta-panel .btn-secondary:hover {
+      background: rgba(15, 23, 42, 0.1);
+    }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    footer .links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">TransformIQ (Structural Adoption Platform)</div>
+      <nav class="nav">
+        <a href="#platform">Platform</a>
+        <a href="#partners">For Consulting Firms</a>
+        <a href="#models">Partner Models</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1 class="hero-title">Partner With Us to Deliver Transformation Success</h1>
+        <p class="hero-subtitle">
+          A structural adoption platform designed for consulting firms. Empower your teams, differentiate your firm, and deliver sustainable change for your clients.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Become a Consulting Partner</a>
+          <a href="#platform" class="btn btn-secondary">Book a 30‑Minute Overview</a>
+        </div>
+        <p class="hero-note">
+          White‑label the platform, embed it into your methodology, and make adoption measurable.
+        </p>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-tag">Partner‑Ready</div>
+        <div class="hero-card">
+          <div class="hero-card-title">From Delivery to Outcomes</div>
+          <div class="hero-card-text">
+            Move beyond activity and artefacts. Give clients a clear view of readiness, risk, and structural progress.
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-title">Built for Consulting Economics</div>
+          <div class="hero-card-text">
+            New revenue lines, recurring monitoring, and scalable delivery across practices and regions.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section-dark">
+      <h2 class="section-title">Transformations Don’t Fail Because of Technology.</h2>
+      <p class="section-subtitle">
+        They fail because organisations aren’t structurally ready to change how they work. The real blockers are rarely visible on a project plan.
+      </p>
+      <div class="pill-list">
+        <div class="pill">Leadership misalignment</div>
+        <div class="pill">Unclear accountability</div>
+        <div class="pill">Incentives reinforcing old behaviours</div>
+        <div class="pill">Slow or ambiguous decision pathways</div>
+        <div class="pill">Capability gaps masked by training</div>
+        <div class="pill">Overload from competing initiatives</div>
+        <div class="pill">Informal power blocking progress</div>
+      </div>
+    </section>
+
+    <!-- CONSULTING GAP -->
+    <section>
+      <h2 class="section-title">Clients Expect Outcomes. Consulting Firms Need a Way to Deliver Them.</h2>
+      <p class="section-subtitle">
+        Your clients want measurable, sustainable change. Your teams need a repeatable, evidence‑based adoption engine that works across industries and programmes.
+      </p>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title">The Pressure on Consulting Firms</div>
+          <div class="card-subtitle">Expectations are rising faster than traditional methods can keep up.</div>
+          <ul>
+            <li>Prove adoption, not just deliverables.</li>
+            <li>Provide measurable progress and structural insight.</li>
+            <li>Scale senior expertise across junior teams.</li>
+            <li>Differentiate in competitive transformation bids.</li>
+            <li>Deliver sustainable change, not short‑term activity.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">The Gap We Fill</div>
+          <div class="card-subtitle">A structural adoption platform you can fully white‑label.</div>
+          <ul>
+            <li>Diagnose readiness and structural risk.</li>
+            <li>Reveal role‑group divergence and blind spots.</li>
+            <li>Provide targeted, sequenced interventions.</li>
+            <li>Track structural improvement over time.</li>
+            <li>Support sustainability beyond programme closure.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATFORM -->
+    <section id="platform">
+      <h2 class="section-title">The Structural Adoption Platform</h2>
+      <p class="section-subtitle">
+        A white‑label system for diagnosing, prioritising, and sustaining organisational change. Built to sit behind your brand and power your transformation offerings.
+      </p>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature-title">Diagnose</div>
+          <div class="feature-text">
+            Assess structural conditions across key mechanisms. Segment results by leadership, management, and frontline roles. Identify hidden risks before they derail delivery.
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-title">Prescribe</div>
+          <div class="feature-text">
+            Use targeted intervention playbooks to align leadership, clarify accountability, adjust incentives, and uplift capability where it matters most.
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-title">Sustain</div>
+          <div class="feature-text">
+            Monitor structural health over time. Reinforce new behaviours through leadership routines. Support long‑term adoption beyond programme closure.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY PARTNER / WHY CLIENTS -->
+    <section id="partners">
+      <div class="two-col">
+        <div>
+          <h2 class="section-title">Why Consulting Firms Partner With Us</h2>
+          <div class="feature-grid">
+            <div class="feature">
+              <div class="feature-title">Differentiate Your Firm</div>
+              <div class="feature-text">
+                Stand out in competitive bids with a proprietary, evidence‑based adoption methodology your competitors don’t have.
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Scale Your Delivery</div>
+              <div class="feature-text">
+                Enable junior teams to deliver senior‑level adoption work using a structured, repeatable framework.
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Create New Revenue Streams</div>
+              <div class="feature-text">
+                Offer diagnostics, intervention design, and sustainability monitoring as billable services.
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Strengthen Client Relationships</div>
+              <div class="feature-text">
+                Provide clarity, insight, and measurable progress that clients can trust and act on.
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">White‑Label Flexibility</div>
+              <div class="feature-text">
+                Rebrand the platform, outputs, and methodology under your firm’s identity and language.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 class="section-title">Why Clients Value It</h2>
+          <div class="card">
+            <ul>
+              <li>Clear visibility of readiness and structural risk.</li>
+              <li>Objective, role‑segmented adoption insights.</li>
+              <li>A measurable adoption index to track progress.</li>
+              <li>Targeted interventions that address root causes.</li>
+              <li>Sustainability beyond go‑live and programme closure.</li>
+            </ul>
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-top:10px;">
+              This bridges the gap between “technology delivered” and “change embedded.”
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNER MODELS -->
+    <section id="models">
+      <h2 class="section-title">Partner Models</h2>
+      <p class="section-subtitle">
+        Choose the partnership structure that best fits your strategy, client base, and delivery model.
+      </p>
+      <div class="model-grid">
+        <div class="model-card">
+          <div class="model-title">White‑Label Partnership</div>
+          <div class="model-text">
+            Embed the platform into your transformation offerings under your brand. You own the client relationship and delivery.
+          </div>
+        </div>
+        <div class="model-card">
+          <div class="model-title">Co‑Delivery Partnership</div>
+          <div class="model-text">
+            Joint delivery for complex or high‑risk programmes. You lead the engagement; we provide diagnostic and structural expertise.
+          </div>
+        </div>
+        <div class="model-card">
+          <div class="model-title">Enterprise Standard Partnership</div>
+          <div class="model-text">
+            Become the preferred implementation partner for clients adopting the platform across their entire transformation portfolio.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE EXAMPLE -->
+    <section>
+      <h2 class="section-title">Example Use Case</h2>
+      <p class="section-subtitle">
+        A generic illustration of how the platform supports consulting partners and their clients through complex change.
+      </p>
+      <div class="case-panel">
+        <div class="case-title">Large Organisation Undergoing Operational Transformation</div>
+        <ul class="case-list">
+          <li>Structural assessment conducted across four role groups.</li>
+          <li>Multiple adoption risks identified early in the programme.</li>
+          <li>Leadership alignment and accountability fixes implemented.</li>
+          <li>Capability uplift delivered across key teams.</li>
+          <li>Adoption index improved significantly within 12–16 weeks.</li>
+          <li>Transformation outcomes achieved and sustained over time.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WHY NOW -->
+    <section>
+      <h2 class="section-title">Why Now</h2>
+      <p class="why-now">
+        Transformation is accelerating. Organisations are overloaded. Consulting firms need a scalable adoption engine. Clients expect measurable outcomes. This is the moment to define a new standard for transformation success.
+      </p>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact">
+      <div class="cta-panel">
+        <h2>Partner With Us</h2>
+        <p>
+          Equip your teams with a structural adoption engine. Deliver transformation with confidence. Build long‑term value for your clients — and your firm.
+        </p>
+        <div class="hero-ctas" style="justify-content:center; margin-bottom:0;">
+          <a href="#" class="btn btn-primary">Become a Consulting Partner</a>
+          <a href="#" class="btn btn-secondary">Request a Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© TransformIQ - Structural Adoption Platform. All rights reserved.</div>
+      <div class="links">
+        <a href="#">About</a>
+        <a href="#">Partner Programme</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+`;
+
+    function resizePartnerIframe() {
+      try {
+        const iframeDoc = partnerIframe.contentWindow.document;
+        const newHeight = Math.max(
+          iframeDoc.body.scrollHeight,
+          iframeDoc.documentElement.scrollHeight
+        );
+        partnerIframe.style.height = (newHeight + 20) + 'px';
+      } catch (error) {
+        partnerIframe.style.height = '1600px';
+      }
+    }
+
+    function showPartnersTab() {
+      mainSiteContent.classList.add('hidden');
+      partnersTab.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#partners-tab');
+      });
+      setTimeout(resizePartnerIframe, 150);
+    }
+
+    function showMainSite(targetHash) {
+      partnersTab.classList.add('hidden');
+      mainSiteContent.classList.remove('hidden');
+      if (targetHash && targetHash !== '#partners-tab') {
+        const target = document.querySelector(targetHash);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      setActiveLink();
+    }
+
+    function setActiveLink(){
+      if (!partnersTab.classList.contains('hidden')) {
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#partners-tab');
+        });
+        return;
+      }
+
+      const scrollY = window.scrollY + 140;
+      let currentId = 'home';
+      for(const section of sections){
+        if(scrollY >= section.offsetTop) currentId = section.id;
+      }
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+      });
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        const href = link.getAttribute('href');
+        mobileMenu.classList.add('hidden');
+
+        if (href === '#partners-tab') {
+          event.preventDefault();
+          showPartnersTab();
+          history.replaceState(null, '', '#partners-tab');
+          return;
+        }
+
+        if (!partnersTab.classList.contains('hidden')) {
+          event.preventDefault();
+          history.replaceState(null, '', href);
+          showMainSite(href);
+        }
+      });
+    });
+
+    openMainTabButton.addEventListener('click', () => {
+      history.replaceState(null, '', '#home');
+      showMainSite('#home');
+    });
+
+    partnerIframe.addEventListener('load', () => {
+      resizePartnerIframe();
+      setTimeout(resizePartnerIframe, 400);
+    });
+
+    window.addEventListener('scroll', setActiveLink);
+    window.addEventListener('load', () => {
+      if (window.location.hash === '#partners-tab') {
+        showPartnersTab();
+      } else {
+        setActiveLink();
+      }
+    });
+    window.addEventListener('resize', resizePartnerIframe);
+  </script>
+</body>
+
+</html>
